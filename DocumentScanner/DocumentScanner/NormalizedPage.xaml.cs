@@ -21,6 +21,8 @@ namespace DocumentScanner
 
             InitializeComponent();
 
+            Image image = gestureView.getImage();
+
             image.Source = normalizedImage.image.ToImageSource();
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -43,7 +45,7 @@ namespace DocumentScanner
                 try
                 {
                     //string savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/normalized.pdf";
-                    string file = Path.Combine(FileSystem.CacheDirectory, "normalized.pdf");
+                    string file = Path.Combine(FileSystem.CacheDirectory, "normalized.png");
 
                     //if (File.Exists(savePath))
                     //{

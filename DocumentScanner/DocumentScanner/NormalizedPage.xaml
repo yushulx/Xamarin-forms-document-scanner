@@ -5,11 +5,9 @@
              x:Class="DocumentScanner.NormalizedPage">
     <ContentPage.Content>
         <AbsoluteLayout>
-            <local:GestureContainer>
-                <Image AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
-                    x:Name="image">
-                </Image>
-            </local:GestureContainer>
+            <local:GestureView x:Name="gestureView" AbsoluteLayout.LayoutBounds="0.5,0.5,1024,1024"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+            </local:GestureView>
 
             <Button
                 x:Name="shareButton"
