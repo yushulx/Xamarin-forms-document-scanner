@@ -13,9 +13,15 @@
                 x:Name="shareButton"
                 Clicked="OnShareClicked"
                 Text="Share"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,120,50"
+                AbsoluteLayout.LayoutBounds="0.5,1,120,50"
                 AbsoluteLayout.LayoutFlags="PositionProportional">
             </Button>
+
+            <StackLayout RadioButtonGroup.GroupName="colors" Orientation="Horizontal">
+                <RadioButton Content="Binary" IsChecked="True" CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton Content="Color" CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton Content="Grayscale" CheckedChanged="RadioButton_CheckedChanged"/>
+            </StackLayout>
 
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -1,6 +1,7 @@
 ﻿using DDNXamarin;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,19 +16,16 @@ namespace DocumentScanner
     public partial class NormalizedPage : ContentPage
     {
         private NormalizedImageResult normalizedImage;
-        public NormalizedPage(NormalizedImageResult data)
+        ImageData imageData;
+        private Quadrilateral quadrilateral;
+        public NormalizedPage(ImageData data, Quadrilateral quad)
         {
-            normalizedImage = data;
+            imageData = data;
+            quadrilateral = quad;
 
             InitializeComponent();
 
-            Image image = gestureView.getImage();
-
-            image.Source = normalizedImage.image.ToImageSource();
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                image.RotateTo(normalizedImage.image.orientation);
-            }
+            UpdateNormalizedImage(Templates.binary);
         }
 
         void OnShareClicked(object sender, EventArgs e)
@@ -74,5 +72,40 @@ namespace DocumentScanner
             }
 
         }
+
+        private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            RadioButton button = sender as RadioButton;
+            if (button != null)
+            {
+                if (button.Content.Equals("Binary") && button.IsChecked)
+                {
+                    UpdateNormalizedImage(Templates.binary);
+                }
+                if (button.Content.Equals("Color") && button.IsChecked)
+                {
+                    UpdateNormalizedImage(Templates.color);
+                }
+                if (button.Content.Equals("Grayscale") && button.IsChecked)
+                {
+                    UpdateNormalizedImage(Templates.grayscale);
+                }
+            }
+        }
+
+        private void UpdateNormalizedImage(string template)
+        {
+            App.ddn.InitRuntimeSettings(template);
+            normalizedImage = App.ddn.Normalize(imageData, quadrilateral);
+
+            Image image = gestureView.getImage();
+
+            image.Source = normalizedImage.image.ToImageSource();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                image.RotateTo(normalizedImage.image.orientation);
+            }
+        }
+
     }
 }

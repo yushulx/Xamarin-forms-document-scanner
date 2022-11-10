@@ -42,8 +42,7 @@ namespace DocumentScanner
                 var quad = imageEditor.getSelectedQuadResult();
                 if (quad != null)
                 {
-                    var result = App.ddn.Normalize(data, quad);
-                    Navigation.PushAsync(new NormalizedPage(result));
+                    Navigation.PushAsync(new NormalizedPage(data, quad));
                 }
             }
             catch (Exception exception)
