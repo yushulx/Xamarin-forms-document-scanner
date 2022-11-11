@@ -1,6 +1,9 @@
 # Xamarin.Forms Document Scanner
 The sample demonstrates how to use Xamarin.Forms and [Dynamsoft Document Normalizer SDK](https://www.dynamsoft.com/document-normalizer/docs/introduction/?ver=latest) to build mobile document scanning apps for Android and iOS. The scanned document, passport, ID card images can be saved as JPEG, PNG or PDF files.
 
+## Download Dynamsoft.DocumentNormalizer.Xamarin.Forms
+[https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms](https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms) 
+
 ## Usage
 1. Apply for a [30-day free trial license](https://www.dynamsoft.com/customer/license/trialLicense?product=dbr) and update the line.
 
