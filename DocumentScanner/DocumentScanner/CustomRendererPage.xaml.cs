@@ -23,15 +23,6 @@ namespace DocumentScanner
             InitializeComponent();
             App.ddn.SetCameraEnhancer(App.dce);
             App.ddn.AddResultListener(this);
-
-            var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += OnTapGestureRecognizerTapped;
-            preview.GestureRecognizers.Add(tapGestureRecognizer);
-        }
-
-        void OnTapGestureRecognizerTapped(object sender, EventArgs args)
-        {
-            App.ddn.EnableReturnImageOnNextCallback();
         }
 
         public void DetectResultCallback(int id, ImageData imageData, DetectedQuadResult[] quadResults)
