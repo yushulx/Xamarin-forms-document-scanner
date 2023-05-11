@@ -2,20 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dynamsoft = "clr-namespace:DDNXamarin;assembly=DDN-Xamarin"
+              xmlns:local="clr-namespace:DocumentScanner;assembly=DocumentScanner" 
              x:Class="DocumentScanner.QuadEditorPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Edit and Save Quad" TextColor="white" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <BoxView WidthRequest="80" VerticalOptions="Center" />
+            <!--<Image Source="{local:ImageResource DocumentScanner.icon-save.png}" VerticalOptions="Center" HorizontalOptions="End" />-->
+            <Button
+                x:Name="normalize"
+                Clicked="OnNormalizeClicked"
+                BackgroundColor="transparent"  HeightRequest="50" WidthRequest="50" ImageSource="{local:ImageResource DocumentScanner.icon-save.png}" VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
     <ContentPage.Content>
         <AbsoluteLayout>
             <dynamsoft:DCVImageEditorView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
                 x:Name="imageEditor">
             </dynamsoft:DCVImageEditorView>
-
-            <Button
-                x:Name="normalize"
-                Clicked="OnNormalizeClicked"
-                Text="Save"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,120,50"
-                AbsoluteLayout.LayoutFlags="PositionProportional">
-            </Button>
 
         </AbsoluteLayout>
 

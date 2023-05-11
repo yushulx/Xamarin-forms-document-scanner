@@ -42,7 +42,7 @@ namespace DocumentScanner
 
         public void LicenseVerificationCallback(bool isSuccess, string msg)
         {
-
+            Console.WriteLine(msg);
         }
     }
 }

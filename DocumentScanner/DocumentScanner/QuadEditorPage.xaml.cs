@@ -42,7 +42,13 @@ namespace DocumentScanner
                 var quad = imageEditor.getSelectedQuadResult();
                 if (quad != null)
                 {
-                    Navigation.PushAsync(new NormalizedPage(data, quad));
+                    //Navigation.PushAsync(new NormalizedPage(data, quad));
+                    InfoData data = new InfoData();
+                    data.imageData = this.data;
+                    data.quad = quad;
+                    MessagingCenter.Send(this, "ImageData", data);
+                    Navigation.RemovePage(Navigation.NavigationStack[2]);
+                    Navigation.PopAsync();
                 }
             }
             catch (Exception exception)
@@ -52,6 +58,11 @@ namespace DocumentScanner
                 });
             }
 
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
         }
     }
 }

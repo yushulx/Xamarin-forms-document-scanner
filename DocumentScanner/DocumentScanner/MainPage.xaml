@@ -1,10 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DocumentScanner.MainPage">
+             xmlns:local="clr-namespace:DocumentScanner;assembly=DocumentScanner" 
+             x:Class="DocumentScanner.MainPage"
+             BackgroundColor="Transparent"
+             Title="CheckCapture">
 
-    <StackLayout>
-        <Button x:Name="customRenderer" Text="Start Scanning" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnCustomRendererButtonClicked" />
+    <StackLayout Margin="20,20,20,20" >
+        <BoxView HeightRequest="30" />
+        <Image Source="{local:ImageResource DocumentScanner.icon-cover.png}"/>
+        <BoxView HeightRequest="30" />
+        <Label Text="Check Capture" FontAttributes="Bold"
+               HorizontalOptions="Center"  />
+        <Label Text="Scan and deposit checks using Xamarin.Forms and Dynamsoft Document Normalizer SDK." 
+               HorizontalOptions="Center" />
+        <BoxView HeightRequest="30" />
+        <Button x:Name="customRenderer" Text="Deposit Check" TextColor="White" HorizontalOptions="Center"  Clicked="OnCustomRendererButtonClicked" BackgroundColor="Orange" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" HeightRequest="50" WidthRequest="200"/>
     </StackLayout>
 
 </ContentPage>

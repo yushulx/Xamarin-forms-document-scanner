@@ -2,14 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dynamsoft = "clr-namespace:DDNXamarin;assembly=DDN-Xamarin"
-             x:Class="DocumentScanner.CustomRendererPage">
+             xmlns:local="clr-namespace:DocumentScanner;assembly=DocumentScanner" 
+             x:Class="DocumentScanner.CustomRendererPage"
+             Title="Scan Check">
     <ContentPage.Content>
         <AbsoluteLayout>
             <dynamsoft:DCVCameraView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="preview">
             </dynamsoft:DCVCameraView>
-            <Button x:Name="capture" Text="Capture"
-                    AbsoluteLayout.LayoutBounds="0.5,0.5,120,50" AbsoluteLayout.LayoutFlags="PositionProportional"
-                    Clicked="OnButtonClicked">
+            <Label Text="Please use landscape mode" Rotation="90" TextColor="White" AbsoluteLayout.LayoutBounds="0.7,0.5,300,300" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <!--<Frame BorderColor="black" BackgroundColor="transparent" CornerRadius="5" HasShadow="False" AbsoluteLayout.LayoutBounds="0.2,0.2,300,600" AbsoluteLayout.LayoutFlags="PositionProportional">
+            </Frame>-->
+        
+            <Button x:Name="capture" 
+                    AbsoluteLayout.LayoutBounds="0.5,0.95,80,80" AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Clicked="OnButtonClicked" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" Rotation="90" BackgroundColor="Orange" BorderRadius="40" 
+        >
             </Button>
         </AbsoluteLayout>
     </ContentPage.Content>

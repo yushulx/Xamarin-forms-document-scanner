@@ -11,7 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dynamsoft.DocumentNormalizer.Xamarin.Forms" Version="1.0.1" />
+    <None Remove="default.png" />
+    <None Remove="icon-capture.png" />
+    <None Remove="icon-cover.png" />
+    <None Remove="icon-save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="default.png" />
+    <EmbeddedResource Include="icon-capture.png" />
+    <EmbeddedResource Include="icon-cover.png" />
+    <EmbeddedResource Include="icon-save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dynamsoft.DocumentNormalizer.Xamarin.Forms" Version="1.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
@@ -21,6 +35,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GestureView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="InfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="NormalizedPage.xaml">

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DocumentScanner;assembly=DocumentScanner" 
+             x:Class="DocumentScanner.InfoPage"
+             Title="Check">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout  BackgroundColor="#EFF1F3" >
+                <!--<BoxView HeightRequest="5" />-->
+
+                <!--<Label Text="Check" FontAttributes="Bold"
+               HorizontalOptions="Center"  />-->
+
+                <Label Text="To Account: 899166072" FontAttributes="Bold"
+               HorizontalOptions="Start"  Margin="20,20,20,20"/>
+
+
+                <StackLayout Orientation="Horizontal" Margin="20,0,20,20">
+                    <Label Text="Amount: $" FontAttributes="Bold"
+               VerticalOptions="Center" />
+
+                    <Editor HorizontalOptions="FillAndExpand" Placeholder="" VerticalOptions="Center"/>
+                </StackLayout>
+
+                <Frame CornerRadius="10" Margin="20,20,20,20">
+                    <StackLayout HeightRequest="250" WidthRequest="400" BackgroundColor="White" >
+                        <Button x:Name="front" Text="Front of Check" TextColor="White" HorizontalOptions="Center" BackgroundColor="#323234" HeightRequest="50" WidthRequest="210" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" Clicked="OnFrontClicked"/>
+
+                        <Frame BorderColor="#80808080" CornerRadius="5" HasShadow="False" Padding="0" HeightRequest="200" WidthRequest="400">
+                            <Image x:Name="front_image" Aspect="AspectFit"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" Margin="20,20,20,20" >
+                    <StackLayout HeightRequest="250" WidthRequest="400" BackgroundColor="White" >
+                        <Button x:Name="back" Text="Back of Check" TextColor="White" HorizontalOptions="Center" BackgroundColor="#323234" HeightRequest="50" WidthRequest="210" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" Clicked="OnBackClicked"/>
+
+                        <Frame BorderColor="#80808080" CornerRadius="5" HasShadow="False" Padding="0" HeightRequest="200" WidthRequest="400">
+                            <Image x:Name="back_image" Aspect="AspectFit"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Button x:Name="commit" Text="Deposit" TextColor="White" HorizontalOptions="Center" BackgroundColor="Orange" HeightRequest="50" WidthRequest="200" Clicked="OnCommitClicked"/>
+            </StackLayout>
+
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -29,11 +29,11 @@ namespace DocumentScanner
         {
 
             if (imageData != null && quadResults != null)
-
             {
-
+                
                 Device.BeginInvokeOnMainThread(async () => {
                     await Navigation.PushAsync(new QuadEditorPage(imageData, quadResults));
+                    
                 });
             }
         }
@@ -58,5 +58,6 @@ namespace DocumentScanner
         {
             App.ddn.EnableReturnImageOnNextCallback();
         }
+
     }
 }

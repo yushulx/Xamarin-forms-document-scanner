@@ -13,7 +13,7 @@ namespace DocumentScanner
 
         async void OnCustomRendererButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomRendererPage());
+            await Navigation.PushAsync(new InfoPage());
         }
     }
 }
