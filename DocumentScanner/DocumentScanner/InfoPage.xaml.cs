@@ -12,6 +12,7 @@ namespace DocumentScanner
         private bool isFront = true;
         private InfoData _frontData = null;
         private InfoData _backData = null;
+
         public InfoPage()
         {
             InitializeComponent();
@@ -22,6 +23,35 @@ namespace DocumentScanner
             navigationPage.Pushed += NavigationPage_Pushed;
 
             MessagingCenter.Subscribe<QuadEditorPage, InfoData>(this, "ImageData", (sender, arg) =>
+            {
+                App.ddn.InitRuntimeSettings(Templates.color);
+
+                NormalizedImageResult normalizedImage = App.ddn.Normalize(arg.imageData, arg.quad);
+
+                if (isFront)
+                {
+                    _frontData = arg;
+                    front_image.Source = normalizedImage.image.ToImageSource();
+                    front_image.RotateTo(270);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        front_image.RotateTo(normalizedImage.image.orientation);
+                    }
+
+                }
+                else
+                {
+                    _backData = arg;
+                    back_image.Source = normalizedImage.image.ToImageSource();
+                    back_image.RotateTo(normalizedImage.image.orientation);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        back_image.RotateTo(normalizedImage.image.orientation);
+                    }
+                }
+            });
+
+            MessagingCenter.Subscribe<CustomRendererPage, InfoData>(this, "ImageData", (sender, arg) =>
             {
                 App.ddn.InitRuntimeSettings(Templates.color);
 

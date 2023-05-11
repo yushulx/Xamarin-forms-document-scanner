@@ -41,8 +41,15 @@ namespace DocumentScanner
                     data.format = imageData.format;
                     data.orientation = imageData.orientation;
 
-                    await Navigation.PushAsync(new QuadEditorPage(data, quadResults));
-                    
+                    //await Navigation.PushAsync(new QuadEditorPage(data, quadResults));
+
+                    InfoData info = new InfoData();
+                    info.imageData = data;
+                    info.quad = quadResults[0].Location;
+                    MessagingCenter.Send(this, "ImageData", info);
+
+                    await Navigation.PopAsync();
+
                 });
             }
         }
