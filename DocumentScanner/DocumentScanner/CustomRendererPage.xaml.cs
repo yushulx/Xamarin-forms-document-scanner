@@ -32,7 +32,16 @@ namespace DocumentScanner
             {
                 
                 Device.BeginInvokeOnMainThread(async () => {
-                    await Navigation.PushAsync(new QuadEditorPage(imageData, quadResults));
+                    ImageData data = new ImageData();
+                    data.imageSource = imageData.imageSource;
+                    data.bytes = new List<byte>(imageData.bytes);
+                    data.width = imageData.width;
+                    data.height = imageData.height;
+                    data.stride = imageData.stride;
+                    data.format = imageData.format;
+                    data.orientation = imageData.orientation;
+
+                    await Navigation.PushAsync(new QuadEditorPage(data, quadResults));
                     
                 });
             }

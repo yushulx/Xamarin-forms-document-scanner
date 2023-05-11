@@ -1,8 +1,5 @@
 ﻿using DDNXamarin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -13,8 +10,11 @@ namespace DocumentScanner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuadEditorPage : ContentPage
     {
-        ImageData data;
-        DetectedQuadResult[] results;
+        private bool isButtonEnabled = true;
+        private TimeSpan buttonDisableDuration = TimeSpan.FromSeconds(2);
+        private ImageData data;
+        private DetectedQuadResult[] results;
+
         public QuadEditorPage(ImageData imageData, DetectedQuadResult[] results)
         {
             InitializeComponent();
@@ -35,27 +35,36 @@ namespace DocumentScanner
             }
         }
 
-        void OnNormalizeClicked(object sender, EventArgs e)
+        async void OnNormalizeClicked(object sender, EventArgs e)
         {
-            try
+            if (isButtonEnabled)
             {
-                var quad = imageEditor.getSelectedQuadResult();
-                if (quad != null)
+                isButtonEnabled = false;
+                try
                 {
-                    //Navigation.PushAsync(new NormalizedPage(data, quad));
-                    InfoData data = new InfoData();
-                    data.imageData = this.data;
-                    data.quad = quad;
-                    MessagingCenter.Send(this, "ImageData", data);
-                    Navigation.RemovePage(Navigation.NavigationStack[2]);
-                    Navigation.PopAsync();
+                    var quad = imageEditor.getSelectedQuadResult();
+                    if (quad != null)
+                    {
+                        InfoData data = new InfoData();
+                        data.imageData = this.data;
+                        data.quad = quad;
+                        MessagingCenter.Send(this, "ImageData", data);
+                        if (Navigation.NavigationStack.Count == 4)
+                        {
+                            Navigation.RemovePage(Navigation.NavigationStack[2]);
+                        }
+
+                        await Navigation.PopAsync();
+                    }
                 }
-            }
-            catch (Exception exception)
-            {
-                Device.BeginInvokeOnMainThread(async () => {
-                    await DisplayAlert("Error", exception.ToString(), "OK");
-                });
+                catch (Exception exception)
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await DisplayAlert("Error", exception.ToString(), "OK");
+                    });
+                }
+                await Task.Delay(buttonDisableDuration);
+                isButtonEnabled = true;
             }
 
         }

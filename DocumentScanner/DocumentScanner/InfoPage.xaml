@@ -4,13 +4,21 @@
              xmlns:local="clr-namespace:DocumentScanner;assembly=DocumentScanner" 
              x:Class="DocumentScanner.InfoPage"
              Title="Check">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Check" TextColor="white" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <BoxView WidthRequest="200" VerticalOptions="Center" />
+            <Button
+                x:Name="upload"
+                Clicked="OnUploadClicked"
+                BackgroundColor="transparent"  HeightRequest="50" WidthRequest="50" ImageSource="{local:ImageResource DocumentScanner.icon-upload.png}" VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout  BackgroundColor="#EFF1F3" >
-                <!--<BoxView HeightRequest="5" />-->
-
-                <!--<Label Text="Check" FontAttributes="Bold"
-               HorizontalOptions="Center"  />-->
 
                 <Label Text="To Account: 899166072" FontAttributes="Bold"
                HorizontalOptions="Start"  Margin="20,20,20,20"/>
@@ -20,7 +28,7 @@
                     <Label Text="Amount: $" FontAttributes="Bold"
                VerticalOptions="Center" />
 
-                    <Editor HorizontalOptions="FillAndExpand" Placeholder="" VerticalOptions="Center"/>
+                    <Editor x:Name="amount" HorizontalOptions="FillAndExpand" Placeholder="" VerticalOptions="Center"/>
                 </StackLayout>
 
                 <Frame CornerRadius="10" Margin="20,20,20,20">
@@ -28,7 +36,11 @@
                         <Button x:Name="front" Text="Front of Check" TextColor="White" HorizontalOptions="Center" BackgroundColor="#323234" HeightRequest="50" WidthRequest="210" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" Clicked="OnFrontClicked"/>
 
                         <Frame BorderColor="#80808080" CornerRadius="5" HasShadow="False" Padding="0" HeightRequest="200" WidthRequest="400">
-                            <Image x:Name="front_image" Aspect="AspectFit"/>
+                            <Image x:Name="front_image" Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FrontImageTapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
                         </Frame>
                     </StackLayout>
                 </Frame>
@@ -38,12 +50,16 @@
                         <Button x:Name="back" Text="Back of Check" TextColor="White" HorizontalOptions="Center" BackgroundColor="#323234" HeightRequest="50" WidthRequest="210" ImageSource="{local:ImageResource DocumentScanner.icon-capture.png}" Clicked="OnBackClicked"/>
 
                         <Frame BorderColor="#80808080" CornerRadius="5" HasShadow="False" Padding="0" HeightRequest="200" WidthRequest="400">
-                            <Image x:Name="back_image" Aspect="AspectFit"/>
+                            <Image x:Name="back_image" Aspect="AspectFit">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BackImageTapped" />
+                                </Image.GestureRecognizers>
+                            </Image>
                         </Frame>
                     </StackLayout>
                 </Frame>
 
-                <Button x:Name="commit" Text="Deposit" TextColor="White" HorizontalOptions="Center" BackgroundColor="Orange" HeightRequest="50" WidthRequest="200" Clicked="OnCommitClicked"/>
+                <!--<Button x:Name="commit" Text="Deposit" TextColor="White" HorizontalOptions="Center" BackgroundColor="Orange" HeightRequest="50" WidthRequest="200" Clicked="OnCommitClicked"/>-->
             </StackLayout>
 
         </ScrollView>

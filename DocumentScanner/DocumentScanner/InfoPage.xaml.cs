@@ -1,10 +1,5 @@
 ﻿using DDNXamarin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +10,8 @@ namespace DocumentScanner
     {
         
         private bool isFront = true;
+        private InfoData _frontData = null;
+        private InfoData _backData = null;
         public InfoPage()
         {
             InitializeComponent();
@@ -27,21 +24,29 @@ namespace DocumentScanner
             MessagingCenter.Subscribe<QuadEditorPage, InfoData>(this, "ImageData", (sender, arg) =>
             {
                 App.ddn.InitRuntimeSettings(Templates.color);
+
                 NormalizedImageResult normalizedImage = App.ddn.Normalize(arg.imageData, arg.quad);
 
                 if (isFront)
                 {
+                    _frontData = arg;
                     front_image.Source = normalizedImage.image.ToImageSource();
                     front_image.RotateTo(270);
-                    //if (normalizedImage.image.width > normalizedImage.image.height)
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        front_image.RotateTo(normalizedImage.image.orientation);
+                    }
 
                 }
                 else
                 {
+                    _backData = arg;
                     back_image.Source = normalizedImage.image.ToImageSource();
                     back_image.RotateTo(normalizedImage.image.orientation);
-                    //if (normalizedImage.image.width > normalizedImage.image.height)
-                    //    back_image.RotateTo(normalizedImage.image.orientation);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        back_image.RotateTo(normalizedImage.image.orientation);
+                    }
                 }
             });
         }
@@ -71,6 +76,57 @@ namespace DocumentScanner
         private void NavigationPage_Pushed(object sender, NavigationEventArgs e)
         {
            
+        }
+
+        private void BackImageTapped(object sender, EventArgs e)
+        {
+            
+            if (_backData != null) {
+                DetectedQuadResult result = new DetectedQuadResult();
+                result.Location = _backData.quad;
+                Navigation.PushAsync(new QuadEditorPage(_backData.imageData,  new DetectedQuadResult[] {result}));
+            }
+            
+        }
+
+        private void FrontImageTapped(object sender, EventArgs e)
+        {
+            if (_frontData != null)
+            {
+                DetectedQuadResult result = new DetectedQuadResult();
+                result.Location = _frontData.quad;
+                Navigation.PushAsync(new QuadEditorPage(_frontData.imageData, new DetectedQuadResult[] { result }));
+            }
+        }
+        void OnUploadClicked(object sender, EventArgs e)
+        {
+            string value = amount.Text;
+
+            if (string.IsNullOrEmpty(value))
+            {
+                DisplayAlert("Error", "The amount is empty!", "OK");
+                return;
+            }
+
+            try
+            {
+                double number = double.Parse(value);
+            }
+            catch
+            {
+                DisplayAlert("Error", "Invalid number!", "OK");
+                return;
+            }
+            
+
+            if (_frontData != null && _backData != null)
+            {
+                DisplayAlert("Check Uploading", "Your check has been successfully deposited to your bank account!", "OK");
+            }
+            else
+            {
+                DisplayAlert("Warning", "Please capture your check!", "OK");
+            }
         }
     }
 }
