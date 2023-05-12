@@ -151,7 +151,7 @@ namespace DocumentScanner
 
             if (_frontData != null && _backData != null)
             {
-                DisplayAlert("Check Uploading", "Your check has been successfully deposited to your bank account!", "OK");
+                DisplayAlert("Check Submit", "Your mobile check has been submitted.", "OK");
             }
             else
             {
