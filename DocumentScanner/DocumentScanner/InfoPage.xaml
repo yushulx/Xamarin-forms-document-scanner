@@ -5,9 +5,8 @@
              x:Class="DocumentScanner.InfoPage"
              Title="Check">
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Check" TextColor="white" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-            <BoxView WidthRequest="200" VerticalOptions="Center" />
+        <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
+            <Label Text="Check" TextColor="white" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
             <Button
                 x:Name="upload"
                 Clicked="OnUploadClicked"
