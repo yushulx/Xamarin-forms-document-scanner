@@ -7,11 +7,11 @@ using DDNXamarin;
 
 namespace DocumentScanner
 {
-    public partial class App : Application, ILicenseVerificationListener
+    public partial class App : Application
     {
         public static ICameraEnhancer dce;
         public static IDocumentNormalizer ddn;
-        public static ILicenseManager licenseManager;
+        
         public static double ScreenWidth;
         public static double ScreenHeight;
 
@@ -22,10 +22,7 @@ namespace DocumentScanner
             dce = enhancer;
             ddn = normalizer;
 
-            licenseManager = manager;
-
-            licenseManager.InitLicense("DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==", this);
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage(manager));
         }
 
         protected override void OnStart()
@@ -40,9 +37,6 @@ namespace DocumentScanner
         {
         }
 
-        public void LicenseVerificationCallback(bool isSuccess, string msg)
-        {
-            Console.WriteLine(msg);
-        }
+        
     }
 }
