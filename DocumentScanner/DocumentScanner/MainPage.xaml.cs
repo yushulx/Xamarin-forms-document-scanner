@@ -1,5 +1,6 @@
 ﻿using DDNXamarin;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,7 +10,8 @@ namespace DocumentScanner
     {
         private bool isButtonEnabled = true;
         private TimeSpan buttonDisableDuration = TimeSpan.FromSeconds(2);
-        public ILicenseManager licenseManager;
+        private ILicenseManager licenseManager;
+        private bool isLicenseValid = true;
 
         public MainPage(ILicenseManager licenseManager)
         {
@@ -20,7 +22,7 @@ namespace DocumentScanner
 
         async void OnCustomRendererButtonClicked(object sender, EventArgs e)
         {
-            if (isButtonEnabled)
+            if (isButtonEnabled && isLicenseValid)
             {
                 isButtonEnabled = false;
                 await Navigation.PushAsync(new InfoPage());
@@ -34,7 +36,10 @@ namespace DocumentScanner
         {
             if (!isSuccess)
             {
-                DisplayAlert("Error", msg, "OK");
+                Device.BeginInvokeOnMainThread(async () => {
+                    isLicenseValid = false;
+                    await DisplayAlert("Error", msg, "OK");
+                });
             }
         }
     }

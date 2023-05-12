@@ -32,10 +32,14 @@ namespace DocumentScanner
                 {
                     _frontData = arg;
                     front_image.Source = normalizedImage.image.ToImageSource();
-                    front_image.RotateTo(270);
+                    
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        front_image.RotateTo(normalizedImage.image.orientation);
+                        front_image.RotateTo(normalizedImage.image.orientation + 180);
+                    }
+                    else
+                    {
+                        front_image.RotateTo(270);
                     }
 
                 }
@@ -43,10 +47,14 @@ namespace DocumentScanner
                 {
                     _backData = arg;
                     back_image.Source = normalizedImage.image.ToImageSource();
-                    back_image.RotateTo(normalizedImage.image.orientation);
+                    
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        back_image.RotateTo(normalizedImage.image.orientation);
+                        back_image.RotateTo(normalizedImage.image.orientation + 180 );
+                    }
+                    else
+                    {
+                        back_image.RotateTo(270);
                     }
                 }
             });
@@ -61,21 +69,28 @@ namespace DocumentScanner
                 {
                     _frontData = arg;
                     front_image.Source = normalizedImage.image.ToImageSource();
-                    front_image.RotateTo(270);
+                    
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        front_image.RotateTo(normalizedImage.image.orientation);
+                        front_image.RotateTo(normalizedImage.image.orientation + 180);
                     }
-
+                    else
+                    {
+                        front_image.RotateTo(270);
+                    }
                 }
                 else
                 {
                     _backData = arg;
                     back_image.Source = normalizedImage.image.ToImageSource();
-                    back_image.RotateTo(normalizedImage.image.orientation);
+                    
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        back_image.RotateTo(normalizedImage.image.orientation);
+                        back_image.RotateTo(normalizedImage.image.orientation + 180);
+                    }
+                    else
+                    {
+                        back_image.RotateTo(270);
                     }
                 }
             });
