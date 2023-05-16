@@ -1,7 +1,7 @@
 # Mobile Check Capture
 The sample demonstrates how to use Xamarin.Forms and [Dynamsoft Document Normalizer SDK](https://www.dynamsoft.com/document-normalizer/docs/introduction/?ver=latest) to build a mobile check capture app for Android and iOS. 
 
-https://github.com/yushulx/test/assets/2202306/2c7f546f-b295-4873-9e5d-ee8772884111
+https://github.com/yushulx/Xamarin-forms-document-scanner/assets/2202306/7330eaea-7207-484b-a955-df110a4a88e6
 
 ## Download Dynamsoft.DocumentNormalizer.Xamarin.Forms
 [https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms](https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms) 
