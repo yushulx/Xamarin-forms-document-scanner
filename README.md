@@ -1,7 +1,7 @@
 # Mobile Check Capture
 The sample demonstrates how to use Xamarin.Forms and [Dynamsoft Document Normalizer SDK](https://www.dynamsoft.com/document-normalizer/docs/introduction/?ver=latest) to build a mobile check capture app for Android and iOS. 
 
-https://private-user-images.githubusercontent.com/2202306/237867823-2f51c1e9-6381-4c44-8c68-c7209062f65a.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg0MjAxNjczLCJuYmYiOjE2ODQyMDEzNzMsInBhdGgiOiIvMjIwMjMwNi8yMzc4Njc4MjMtMmY1MWMxZTktNjM4MS00YzQ0LThjNjgtYzcyMDkwNjJmNjVhLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA1MTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwNTE2VDAxNDI1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0MjFmMGRkMjlkOGM3ZmM4ZjBjN2Y0Y2U4MDE2Zjk5YzMyMzQ0ZDcyNTBhNmUzZmI2MDhjNTJkOWU1NDZlMmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.SWF_Psp5OVLGnJ0aDDgRLXbBBHHLPTfUdRSb-YJWduU
+https://github.com/yushulx/test/assets/2202306/2c7f546f-b295-4873-9e5d-ee8772884111
 
 ## Download Dynamsoft.DocumentNormalizer.Xamarin.Forms
 [https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms](https://www.nuget.org/packages/Dynamsoft.DocumentNormalizer.Xamarin.Forms) 
